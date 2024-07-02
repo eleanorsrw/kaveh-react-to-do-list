@@ -3,14 +3,12 @@ import NavBar from './NavBar'
 import { useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus } from '@fortawesome/free-solid-svg-icons'
-import kavehGif from "./assets/kaveh-encourage.gif"
-import kavehJpg from "./assets/kaveh-encourage.jpg"
+import { PlayGifJpg } from "./PlayGifJpg"
 
 export default function App() {
 
   const [newTask, setNewTask] = useState("")
   const [tasks, setTasks] = useState([])
-  const [gif, setGif] = useState(false)
 
   // adds new task
   function addUserInput() {
@@ -29,14 +27,6 @@ export default function App() {
     setTasks([])
   }
 
-  function playGif(){
-    setGif(true)
-    setTimeout(() => {
-      setGif(false)
-    }, 1500)
-  }
-
-
   return (
     <>
 
@@ -44,24 +34,8 @@ export default function App() {
 
       <section className="major-container">
         <div className="main-area">
-          <div className="left-container">
-            <div className="kaveh-gif">
-              {!gif && <img src={kavehJpg} alt="Kaveh waiting" />}
-              {gif && <img src={kavehGif} alt="Kaveh gif playing"></img>}
-            </div>
-            <div className="kaveh-gif">
-            {!gif && <img src={kavehJpg} alt="Kaveh waiting" />}
-            {gif && <img src={kavehGif} alt="Kaveh gif playing"></img>}
-            </div>
-            <div className="new-list">
-              <button 
-              id="encouragement-button"
-              onClick={playGif}
-
-              >click for double encouragement!</button>
-            </div>
-          </div>
-
+          
+          <PlayGifJpg />
 
           <div className="right-container">
             <h1 className="to-do-list-header">To Do List</h1>
@@ -81,11 +55,8 @@ export default function App() {
                 <FontAwesomeIcon icon={faMinus} 
                 className="minusIcon"
                 onClick={() => deleteTask(index)}/>
-
                 </li>
-                
             ))}
-
             </ul>
             <button id="clearAll"
             onClick={clearAllTasks}>Clear all items</button>
