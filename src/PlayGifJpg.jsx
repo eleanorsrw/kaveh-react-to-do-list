@@ -7,32 +7,30 @@ export function PlayGifJpg() {
     const [gif, setGif] = useState(false)
 
 
-    function playGif(){
+    function playGif() {
         setGif(true)
         setTimeout(() => {
-          setGif(false)
+            setGif(false)
         }, 1500)
-      }
+    }
 
     return (
-    <div className="left-container">
-        <div className="kaveh-gif">
-            {!gif && <img src={kavehJpg} alt="Kaveh waiting" />}
-            {gif && <img src={kavehGif} alt="Kaveh gif playing"></img>}
-        </div>
-        <div className="kaveh-gif">
-            {!gif && <img src={kavehJpg} alt="Kaveh waiting" />}
-            {gif && <img src={kavehGif} alt="Kaveh gif playing"></img>}
-        </div>
-        <div className="new-list">
-            <button 
-            id="encouragement-button"
-            onClick={playGif}
+        <div className="left-container">
+            <div className="kaveh-gif">
+                {gif ? <img src={kavehGif} alt="Kaveh gif playing"></img> : <img src={kavehJpg} alt="Kaveh waiting" />}
+            </div>
+            <div className="kaveh-gif">
+                {gif ? <img src={kavehGif} alt="Kaveh gif playing"></img> : <img src={kavehJpg} alt="Kaveh waiting" />}
+            </div>
+            <div className="new-list">
+                <button
+                    id="encouragement-button"
+                    onClick={playGif}
 
-            >click for double encouragement!
-            </button>
+                >click for double encouragement!
+                </button>
+            </div>
         </div>
-    </div>
     )
 }
 

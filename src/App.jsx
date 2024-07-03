@@ -11,7 +11,8 @@ export default function App() {
   const [tasks, setTasks] = useState([])
 
   // adds new task
-  function addUserInput() {
+  function addUserInput(event) {
+    event.preventDefault();
     if (newTask.trim() === "") return;
     setTasks([...tasks, newTask.trim()]);
     setNewTask("");
@@ -40,14 +41,15 @@ export default function App() {
           <div className="right-container">
             <h1 className="to-do-list-header">To Do List</h1>
             <ul id="toDoList">
-              <li>
-                <input type="text" id="newTask" placeholder="Add new item..." 
-                value={newTask}
-                onChange={event => setNewTask(event.target.value)}
-                /> 
-                <input type="button" id="setNewTask" value="Submit" 
-                onClick={addUserInput}/>
-              </li>
+              <form onSubmit={addUserInput}>
+                <li>
+                  <input type="text" id="newTask" placeholder="Add new item..." 
+                  value={newTask}
+                  onChange={event => setNewTask(event.target.value)}
+                  /> 
+                  <input type="submit" id="setNewTask" value="Submit" />
+                </li>
+              </form>
             </ul>
             <ul id="userList">
             {tasks.map((task, index) => (
