@@ -61,7 +61,7 @@ export default function App() {
             ))}
             </ul>
             <button id="clearAll"
-            onClick={clearAllTasks}>Clear all items</button>
+            onClick={clearAllTasks}>Clear all items.</button>
           </div>
         </div>
       </section>
